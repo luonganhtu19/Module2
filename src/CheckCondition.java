@@ -26,5 +26,8 @@ public class CheckCondition {
             if (inputString.equals("\n"));
         }while (check);
     }
-
+    public String inputDataString(String mess){
+        System.out.println(mess);
+        return input.nextLine();
+    }
 }

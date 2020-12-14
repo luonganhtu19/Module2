@@ -21,8 +21,16 @@ public class Service {
         }
     }
     public void addNewContact() throws IOException{
-
-
+         InforPerson inforPersonNew= new InforPerson();
+        inforPersonNew.setNumberTelephone(checkCondition.inputDataString("Số điện thoại: "));
+        inforPersonNew.setGroup(checkCondition.inputDataString("Nhóm danh bạ: "));
+        inforPersonNew.setFullName(checkCondition.inputDataString("Họ và tên: "));
+        inforPersonNew.setGender(checkCondition.inputDataString("Giới tính: "));
+        inforPersonNew.setAddress(checkCondition.inputDataString("Địa chỉ: "));
+        inforPersonNew.setBirthDay(checkCondition.inputDataString("Ngày sinh: "));
+        inforPersonNew.setEmail(checkCondition.inputDataString("Email"));
+        dataList.add(inforPersonNew);
+        System.out.println("Success add infomation");
     }
     public void readFile() throws IOException {
         File file=new File(path);

@@ -11,8 +11,7 @@ public class DisplayMenu {
         System.out.println("7. Ghi vào file");
         System.out.println("8. Thoát");
     }
-    public void inputString(String mess){
+    public void displayString(String mess){
         System.out.println(mess);
     }
-
 }
