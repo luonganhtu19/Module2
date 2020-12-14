@@ -18,14 +18,17 @@ public class Program {
                     service.addNewContact();
                     break;
                 case 3:
+                    se
                     break;
                 case 4:
                     break;
                 case 5:
                     break;
                 case 6:
+                    service.readFile();
                     break;
                 case 7:
+                    service.writeFile();
                     break;
                 case 8:
                     System.out.println(" Bye bye, see you again");
