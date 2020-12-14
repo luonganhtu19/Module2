@@ -15,6 +15,7 @@ public class Program {
                     service.displayFile();
                     break;
                 case 2:
+                    service.addNewContact();
                     break;
                 case 3:
                     break;
