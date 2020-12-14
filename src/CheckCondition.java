@@ -26,4 +26,5 @@ public class CheckCondition {
             if (inputString.equals("\n"));
         }while (check);
     }
+
 }

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Service {
     private String path="dataBase/contacts.csv";
-    private static ArrayList<Object> dataList=new ArrayList<>();
+    private  ArrayList<Object> dataList=new ArrayList<>();
     private DisplayMenu displayMenu=new DisplayMenu();
     private CheckCondition checkCondition= new CheckCondition();
 
@@ -13,6 +13,7 @@ public class Service {
 
 
     public void displayFile() throws IOException {
+        dataList= new ArrayList<>();
         readFile();
         for (Object obj:dataList){
             InforPerson inforPerson=(InforPerson) obj;
@@ -20,7 +21,7 @@ public class Service {
         }
     }
     public void addNewContact() throws IOException{
-       String numberPhone= displayMenu.
+
 
     }
     public void readFile() throws IOException {

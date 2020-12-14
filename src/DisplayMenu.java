@@ -14,4 +14,5 @@ public class DisplayMenu {
     public void inputString(String mess){
         System.out.println(mess);
     }
+
 }
