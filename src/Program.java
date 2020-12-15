@@ -9,7 +9,6 @@ public class Program {
                while (true) {
                    displayMenu.menu();
                    int choice = checkCondition.checkInputInt("Chọn chức năng: ");
-
                    switch (choice) {
                 case 1:
                     service.displayFile();
@@ -18,7 +17,7 @@ public class Program {
                     service.addNewContact();
                     break;
                 case 3:
-                    se
+
                     break;
                 case 4:
                     break;

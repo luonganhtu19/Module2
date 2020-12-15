@@ -15,7 +15,7 @@ public class CheckCondition {
                 System.out.println(" Please try again "+mess);
             }
         }
-        return 1;
+        return number;
     }
 
     public void inputStringEnter(String mess){
@@ -28,6 +28,13 @@ public class CheckCondition {
     }
     public String inputDataString(String mess){
         System.out.println(mess);
-        return input.nextLine();
+        String inputData=input.nextLine();
+        return inputData;
+    }
+    public boolean inputStringYN(String mess){
+            System.out.println(mess);
+            String inputString=input.nextLine();
+            if (inputString.equals("Y")) return true;
+            else return false;
     }
 }

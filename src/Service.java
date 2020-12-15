@@ -5,16 +5,24 @@ import java.util.ArrayList;
 public class Service {
     private String path="dataBase/contacts.csv";
     private  ArrayList<Object> dataList=new ArrayList<>();
+    private static ArrayList<Object> tempDataList=new ArrayList<>();
     private DisplayMenu displayMenu=new DisplayMenu();
     private CheckCondition checkCondition= new CheckCondition();
 
 
     public Service(){}
-
+    static {
+        Service service=new Service();
+        try {
+            service.readFile(tempDataList);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     public void displayFile() throws IOException {
         dataList= new ArrayList<>();
-        readFile();
+        readFile(dataList);
         for (Object obj:dataList){
             InforPerson inforPerson=(InforPerson) obj;
             System.out.println(inforPerson.toString());
@@ -29,10 +37,19 @@ public class Service {
         inforPersonNew.setAddress(checkCondition.inputDataString("Địa chỉ: "));
         inforPersonNew.setBirthDay(checkCondition.inputDataString("Ngày sinh: "));
         inforPersonNew.setEmail(checkCondition.inputDataString("Email"));
-        dataList.add(inforPersonNew);
+        System.out.println("");
+        displayMenu.displayString("Information contact new");
+        displayMenu.displayString(inforPersonNew.toString());
+        displayMenu.displayString("Do you want save contact: Y (Y: Yes)");
+        
+        tempDataList.add(inforPersonNew);
         System.out.println("Success add infomation");
     }
-    public void readFile() throws IOException {
+    public void updateInfo() throws IOException{
+        String numberTelephone=checkCondition.inputDataString("Nhập số điện thoại");
+
+    }
+    private void readFile(ArrayList<Object> list) throws IOException {
         File file=new File(path);
         if (!file.exists()){
             System.out.println("File not found");
@@ -52,24 +69,37 @@ public class Service {
             inforPerson.setAddress(data[4]);
             inforPerson.setBirthDay(data[5]);
             inforPerson.setEmail(data[6]);
-            dataList.add(inforPerson);
+            list.add(inforPerson);
         }
         bufferedReader.close();
         fileReader.close();
     }
+    public void readFile() throws IOException {
+        readFile(dataList);
+    }
     public void writeFile() throws IOException{
         FileWriter fileWriter=new FileWriter(new File(path));
-        BufferedWriter bufferedWriter=new BufferedWriter(fileWriter);
-        for (Object obj: dataList){
+        fileWriter.append("Số điện thoại,Nhóm,Họ tên,Giới tính,Địa chỉ,Ngày sinh,Email");
+        fileWriter.append("\n");
+        for (Object obj: tempDataList){
             InforPerson inforPerson=(InforPerson) obj;
-            fileWriter.append("Số điện thoại,Nhóm,Họ tên,Giới tính,Địa chỉ,Ngày sinh,Email");
             fileWriter.append(inforPerson.getNumberTelephone());
+            fileWriter.append(",");
             fileWriter.append(inforPerson.getGroup());
+            fileWriter.append(",");
             fileWriter.append(inforPerson.getFullName());
+            fileWriter.append(",");
             fileWriter.append(inforPerson.getGender());
+            fileWriter.append(",");
             fileWriter.append(inforPerson.getBirthDay());
+            fileWriter.append(",");
             fileWriter.append(inforPerson.getAddress());
+            fileWriter.append(",");
             fileWriter.append(inforPerson.getEmail());
+            fileWriter.append("\n");
         }
+
+        fileWriter.close();
     }
+
 }
